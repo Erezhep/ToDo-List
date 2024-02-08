@@ -1,0 +1,98 @@
+.d_flex{
+    display: flex;
+    justify-content: center;
+}
+.header{
+    padding:30px;
+    background-color:#ffffff;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size:30px;
+    font-weight: 500;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+form{
+    width:600px;
+    height:auto;
+    border-radius: 10px;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    padding:30px 60px;
+}
+form input{
+    height:40px;
+    border:none;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 0 20px;
+}
+form button{
+    height:30px;
+    border:none;
+    background-color:#b167d8;
+    color:#fff;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.todo__list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.todo__list__item{
+    width:600px;
+    padding:20px;
+    background-color:#FFFD82;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+.todo__list__item:first-child{
+    margin-top: 20px;
+}
+.list__item__btns{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.btns__important{
+    width:30px;
+    height:30px;
+    border-radius:3px;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.btns__important img{
+    width:100%;
+    height:70%;
+}
+
+.btns__delete{
+    width:30px;
+    height:30px;
+    border-radius:3px;
+    background-color:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btns__delete img{
+    width:70%;
+    height:70%;
+}
+
+/* свой стиль  для кнопки удаления */
+.btns__important > button {
+    border: none;
+    background-color: #fff;
+}
+
+.btns__delete > button {
+    border: none;
+    background-color: #fff;
+}
