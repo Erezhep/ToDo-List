@@ -39,6 +39,8 @@ add_task.addEventListener('click', (e) => {
 
 		taskList.push(obj);
 		let t = createTaskItem(obj);
+		titleInput.value = "";
+		bodyInput.value = "";
 		todoList.insertAdjacentHTML('afterbegin', t);
 	}else{
 		alert("Заполните все поля");
