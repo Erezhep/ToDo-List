@@ -31,10 +31,10 @@ add_task.addEventListener('click', (e) => {
 	const end_id = taskList[taskList.length - 1].id;
 	if (titleInput.value !== "" && bodyInput.value !== ""){
 		const obj = {
-			id: end_id + 1,
-			title: titleInput.value,
-			body: bodyInput.value,
-			important: false
+			"id" : end_id + 1,
+			"title" : titleInput.value,
+			"body" : bodyInput.value,
+			"important" : false
 		};
 
 		taskList.push(obj);
@@ -64,19 +64,19 @@ getTasksList(taskList);
 
 function createTaskItem (task) {
 	const taskItem = `
-    <li style="background-color: ${task.important ? '#58A4B0' : ''}" class="todo__list__item" id="${task.id}i">
+    <li class="todo__list__item" id="${task.id}i">
         <div class="list__item__desc">
             <h3>${task.title}</h3>
             <p>${task.body}</p>
         </div>
         <div class="list__item__btns">
-            <div style="background-color: ${task.important ? '#ED217C' : ''}" class="btns__important" id="${task.id}b">
-				<button style="background-color: ${task.important ? '#ED217C' : ''}" type="button" id="${task.id}">
+            <div class="btns__important" id="${task.id}b">
+				<button type="button" id="${task.id}" onclick="importantTag(${task.id})">
             	    <img src="images/icons8-important-30.png" alt="">
 				</button>
             </div>
             <div class="btns__delete">
-				<button type="button" id="-${task.id}">
+				<button type="button" id="-${task.id}" onclick="removeTag(${task.id})">
                 	<img src="images/icons8-delete-30.png" alt="">
 				</button>
             </div>
@@ -95,44 +95,42 @@ const objList = taskList.reduce((acc, item)=>{
 }, {});
 
 const objKeys = Object.keys(objList);
+
+
 // Удаление заданию
-for (let i = 0; i < objKeys.length; i++) {
-	const btnOfKey = document.getElementById("-" + objKeys[i]);
-	btnOfKey.addEventListener('click', () => {
-		console.log(taskList[i].id + "i");
-		const taskToRemove = document.getElementById(taskList[i].id + "i");
-		if (taskToRemove) {
-			taskToRemove.remove();
-			console.log('Элемент успешно удален из DOM.');
-		  } else {
-			console.log('Элемент не найден.');
-		  }
-	});
+function removeTag(id){
+	const btnOfKey = document.getElementById("-" + id);
+	console.log(id + "i");
+	const taskToRemove = document.getElementById(id + "i");
+	if (taskToRemove) {
+		taskToRemove.remove();
+		console.log('Элемент успешно удален из DOM.');
+	  } else {
+		console.log('Элемент не найден.');
+	  }
 }
 
 // важный или не важный
-console.log(objList);
-for(let j = 0; j < objKeys.length; j++) {
-	const btnImportant = document.getElementById(objKeys[j]);
-	console.log(btnImportant);
-	btnImportant.addEventListener('click', () => {
+// for(let j = 0; j < objKeys.length; j++) {
+function importantTag(id){
+	const btnImportant = document.getElementById(id);
 
-		const backgroundColor = window.getComputedStyle(btnImportant).backgroundColor;
-		const listImportant = document.getElementById(objKeys[j] + "i");
-		const listBlock = document.getElementById(objKeys[j] + "b");
+	const backgroundColor = window.getComputedStyle(btnImportant).backgroundColor; // Фоновый цвет кнопку
+	const listBlock = document.getElementById(id + "b"); // Фоновый цвет блок
+	const listImportant = document.getElementById(id + "i"); // Фоновый цвет листа
+	
+	let colorList = 'rgb(255, 253, 130)'; // Фоновый цвет для лист по умолчанию
+	let colorButton = 'rgb(255, 255, 255)' // Фоновый цвет для блок и кнопку по умолчанию
 
-		let colorList = 'rgb(255, 253, 130)';
-		let colorButton = 'rgb(255, 255, 255)'
-
-		if (backgroundColor ===  colorButton){
-			colorButton = 'rgb(237, 33, 124)';
-			colorList = 'rgb(88, 164, 176)'
-		}
-		btnImportant.style.backgroundColor = colorButton;
-		listImportant.style.backgroundColor = colorList;
-		listBlock.style.backgroundColor = colorButton;
-
-	})
+	if (backgroundColor ===  colorButton){
+		colorButton = 'rgb(237, 33, 124)';
+		colorList = 'rgb(88, 164, 176)'
+	}
+	btnImportant.style.backgroundColor = colorButton;
+	listImportant.style.backgroundColor = colorList;
+	listBlock.style.backgroundColor = colorButton;
+		
 }
+// }
 
 // End buttons ------------------------------------------------------------
