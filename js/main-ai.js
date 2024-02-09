@@ -113,7 +113,6 @@ function removeTag(id){
 }
 
 // важный или не важный
-// for(let j = 0; j < objKeys.length; j++) {
 function importantTag(id){
 	const btnImportant = document.getElementById(id);
 
@@ -133,6 +132,4 @@ function importantTag(id){
 	listBlock.style.backgroundColor = colorButton;
 		
 }
-// }
-
 // End buttons ------------------------------------------------------------
